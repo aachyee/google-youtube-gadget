@@ -1,0 +1,34 @@
+<strings>
+  <GADGET_NAME>YouTube</GADGET_NAME>
+  <GADGET_DESCRIPTION>Watch today's most popular YouTube videos</GADGET_DESCRIPTION>
+  <GADGET_ABOUT_TEXT>
+    YouTube
+    Copyright 2008 Google Inc.
+Watch today's most popular YouTube videos. Right-click the gadget to select a video feed, or use the search box to find videos.
+
+Licensed under the Apache License, Version 2.0
+http://www.apache.org/licenses/LICENSE-2.0
+
+This gadget was created by Google and is maintained by the open-source community
+http://code.google.com/p/google-youtube-gadget/
+  </GADGET_ABOUT_TEXT>
+
+  <UPDATING_VIDEOS>Updating videos...</UPDATING_VIDEOS>
+  <VIDEO_ERROR>Video not found</VIDEO_ERROR>
+  <MENU_REFRESH>Refresh videos</MENU_REFRESH>
+  <FLASH_REQUIRED>This gadget requires the latest Flash Player.</FLASH_REQUIRED>
+  <INSTALL_FLASH>Click here to download and install the Adobe Flash Player.</INSTALL_FLASH>
+  <VIDEO_VIEW_COUNT desc="The number of times a video has been viewed">Views: [![VIEW_COUNT]!]</VIDEO_VIEW_COUNT>
+  <SEARCH desc="Hint in the searchbox">Search YouTube</SEARCH>
+  <LEARN_MORE>Watch this video on YouTube</LEARN_MORE>
+  <RATINGS>[![TOTAL_RATERS]!] ratings</RATINGS>
+  <VIEWERS desc="Total number of views of a youtube video">[![VIEWS]!] views</VIEWERS>
+
+  <SEARCH_TITLE>Search results</SEARCH_TITLE>
+  <FEATURED desc="Featured videos on YouTube menu item">Featured videos</FEATURED>
+  <MOST_VIEWED desc="Most viewed videos on YouTube menu item">Most viewed videos</MOST_VIEWED>
+  <MOST_DISCUSSED desc="Most discussed videos on YouTube menu item">Most discussed videos</MOST_DISCUSSED>
+  <TOP_FAVORITED desc="Top favourite videos on YouTube menu item">Top favorited videos</TOP_FAVORITED>
+  <CONTEXTUAL>Show context-relevant videos</CONTEXTUAL>
+
+</strings>
