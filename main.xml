@@ -14,8 +14,8 @@
   <div name="frame" width="100%" height="100%" x="0" y="0">
     <div name="top_left" width="12" height="99"
       background="images/main/top_left.png" />
-    <img name="top_middle" x="12" width="172" height="99"
-      src="images/main/top.png" />
+    <div name="top_middle" x="12" width="172" height="99"
+      background="images/main/top.png" />
     <div name="top_right" x="184" width="16" height="99"
       background="images/main/top_right.png" />
 
@@ -28,8 +28,8 @@
 
     <div name="bottom_left" y="247" width="12" height="53"
       background="images/main/bottom_left.png" />
-    <img name="bottom_middle" x="12" y="247" width="172" height="53"
-      src="images/main/bottom.png" />
+    <div name="bottom_middle" x="12" y="247" width="172" height="53"
+      background="images/main/bottom.png" />
     <div name="bottom_right" x="184" y="247" width="16" height="53"
       background="images/main/bottom_right.png" />
 
