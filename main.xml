@@ -8,6 +8,7 @@
   <script src="profile.js" />
   <script src="constants.js" />
   <script src="options.js" />
+  <script src="version_checker.js" />
   <script src="youtube.js" />
   <script src="main.js" />
 
@@ -102,6 +103,15 @@
           <label size="8" color="#CCCCCC">&TOP_FAVORITED;</label>
         </div>
       </div>
+    </div>
+    <div name="upgradeDiv" x="10" y="30" width="225" height="360"
+      background="#000000" enabled="true" visible="false">
+      <label name="upgradeReason" size="8" color="#CCCCCC" width="100%" height="60" y="5"
+        wordWrap="true">&MUST_UPGRADE;</label>
+      <a name="upgradeInfoUrl" size="8" color="#FFFFFF" overColor="#FFFFFF" width="100%" height="20"
+        y="65">&MORE_INFORMATION;</a>
+      <a name="upgradeDownloadUrl" size="8" color="#FFFFFF" overColor="#FFFFFF" width="100%" height="20"
+        y="85">&DOWNLOAD_GADGET;</a>
     </div>
   </div>
   <edit name="descriptionSizer" height="19" color="#cccccc" size="8" visible="false" />

@@ -37,6 +37,10 @@ options.putDefaultValue(Options.FEED_KEY, strings.FEATURED);
  * @param {Menu} menu http://desktop.google.com/dev/gadget_apiref.html#menu
  */
 Options.onAddMenuItems = function(menu) {
+  if (g_isUpgradeMode) {
+    return;
+  }
+
   menu.AddItem(strings.MENU_REFRESH, 0, _onRefreshButton);
 
   menu.AddItem("-", 0x800, 0); // Separator

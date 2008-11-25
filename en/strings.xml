@@ -1,4 +1,5 @@
 <strings>
+  <VERSION_STRING>1.0.0.0</VERSION_STRING>
   <GADGET_NAME>YouTube</GADGET_NAME>
   <GADGET_DESCRIPTION>Watch today's most popular YouTube videos</GADGET_DESCRIPTION>
   <GADGET_ABOUT_TEXT>
@@ -31,4 +32,8 @@ http://code.google.com/p/google-youtube-gadget/
   <TOP_FAVORITED desc="Top favourite videos on YouTube menu item">Top favorited videos</TOP_FAVORITED>
   <CONTEXTUAL>Show context-relevant videos</CONTEXTUAL>
 
+  <MUST_UPGRADE>You&apos;re using a version of the YouTube gadget that is no longer supported. Please update to the latest version.</MUST_UPGRADE>
+  <MORE_INFORMATION>More information</MORE_INFORMATION>
+  <DOWNLOAD_GADGET>Download gadget</DOWNLOAD_GADGET>
+  <PLEASE_UPGRADE>Update available</PLEASE_UPGRADE>
 </strings>
