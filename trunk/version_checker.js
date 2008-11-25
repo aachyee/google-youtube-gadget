@@ -54,12 +54,12 @@ Version.prototype.isGreater = function(other) {
 
 Version.parse = function(versionString) {
   var versionParts = versionString.split('.');
-  var version = new Version();
 
   if (versionParts.length != 4) {
     return null;
   }
 
+  var version = new Version();
   version.major = parseInt(versionParts[0]);
   version.minor = parseInt(versionParts[1]);
   version.build = parseInt(versionParts[2]);
@@ -141,6 +141,7 @@ function VersionChecker(currentVersionString, url, onUpgradeNeeded) {
 
 VersionChecker.prototype.scheduleTimer = function(interval) {
   debug.trace('Scheduling version check in ' + interval);
+  view.clearTimeout(this.checkTimer);
   this.checkTimer = view.setTimeout(this.makeCheck(),
       interval);
 };
@@ -198,7 +199,7 @@ VersionChecker.prototype.onReadyStateChange = function(request) {
 
     if (upgradeInfo.mandatoryVersion.isGreater(this.currentVersion)) {
       // No more need to check.
-      view.clearInterval(this.checkTimer);
+      view.clearTimeout(this.checkTimer);
       this.onUpgradeNeeded(upgradeInfo);
     }
   }
