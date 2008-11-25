@@ -5,7 +5,7 @@
   </platform>
   <about>
     <id>346F5B4E-0285-4b14-89E8-ED967CF349C7</id>
-    <version>1.0.0.0</version>
+    <version>&VERSION_STRING;</version>
     <author>Google Inc.</author>
     <authorEmail></authorEmail>
     <authorWebsite>http://desktop.google.com/plugins.html</authorWebsite>

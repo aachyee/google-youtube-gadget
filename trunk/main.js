@@ -135,6 +135,11 @@ function _logo_onclick() {
   framework.openUrl('http://www.youtube.com');
 }
 
+var g_versionChecker;
+var VERSION_INFO_URL = 'http://jyum.sfo:1109/plugins/versions/youtube.txt';
+
+var g_contentRefreshTimer;
+
 /**
  * Initial setup, creates a dummy xml details view to set the default size of
  * the actual details view that will contain the videos. Loads the map of
@@ -148,16 +153,51 @@ function init() {
   updateFeedDescription();
   exitSearchMode();
 
-  view.setInterval(getFreshVideos, CONTENT_REFRESH_INTERVAL_MS);
+  g_contentRefreshTimer = view.setInterval(getFreshVideos,
+      CONTENT_REFRESH_INTERVAL_MS);
 
   plugin.onAddCustomMenuItems = Options.onAddMenuItems;
 
   var feed = Options.currentFeed();
   setDescriptionText(feed);
   view.setInterval(function() { gl_videoRequestCount = 0; }, 30 * 60 * 1000);
+
+  g_versionChecker = new VersionChecker(strings.VERSION_STRING,
+      VERSION_INFO_URL, onMandatoryUpgrade);
+}
+
+var g_isUpgradeMode = false;
+
+function onMandatoryUpgrade(upgradeInfo) {
+  debug.trace('Received mandatory upgrade notice.');
+
+  g_isUpgradeMode = true;
+  killTimers();
+
+  upgradeReason.innerText = upgradeInfo.reason;
+  upgradeInfoUrl.href = upgradeInfo.infoUrl;
+  upgradeDownloadUrl.href = upgradeInfo.downloadUrl;
+
+  feed_select.visible = false;
+  content.visible = false;
+  description.visible = false;
+  drop_arrow_container.visible = false;
+  searchbox.visible = false;
+  upgradeDiv.visible = true;
+  updateStatus(strings.PLEASE_UPGRADE);
+}
+
+function killTimers() {
+  view.clearInterval(g_contentRefreshTimer);
+  view.clearTimeout(gl_networkCheckTimeout);
+  view.clearTimeout(gl_restartVideoRefreshTimeout);
 }
 
 function setDescriptionText(text) {
+  if (g_isUpgradeMode) {
+    return;
+  }
+
   description.innerText = text;
   descriptionSizer.value = text;
 
@@ -213,6 +253,9 @@ function _onSize() {
   content.height = height - CONTENT_HEIGHT_PADDING;
   content.height = content.height - searchbox.height;
   searchresults.height = content.height;
+
+  upgradeDiv.width = width - CONTENT_WIDTH_PADDING;
+  upgradeDiv.height = content.height + searchbox.height;
 
   middle_left.height = height - TOP_HEIGHT;
   middle_middle.height = height - TOP_HEIGHT;
