@@ -544,8 +544,6 @@ function updateVideos(videosArray) {
       videosArray[i].fetchStatusImage();
     }
   }
-
-  shouldDisplay();
 }
 
 /**
@@ -634,73 +632,18 @@ function _showDetailsView(itemId) {
     }
   }
 
-  gl_isUserInteracting = true;
+  var curItem = getVideoById(itemId);
 
+  gl_isUserInteracting = true;
   var xmlDetailsView = new DetailsView();
+  xmlDetailsView.detailsViewData.putValue("closeDetailsView", closeDetailsView);
   xmlDetailsView.contentIsView = true;
   xmlDetailsView.setContent("", undefined, "details.xml", false, 0);
 
-  xmlDetailsView.view.children('close').onclick = closeDetailsView;
-  xmlDetailsView.view.children('title').onclick = closeDetailsView;
-
-  var curItem = getVideoById(itemId);
-  assert(curItem && curItem.embeddedurl);
   if (curItem !== null && curItem.embeddedurl !== "") {
-    // Fill in the details of the video
-    var title = xmlDetailsView.view.children('title');
-    title.href = curItem.url;
-    title.innerText = curItem.title;
-
-    var container = xmlDetailsView.view.children('player_container');
-    var description = container.children('description');
-    description.innerText = curItem.description;
-    container.children('more_link').href = curItem.url;
-
-    // ratings
-    var ratings = container.children('ratings');
-    ratings.children('total').innerText = strings.RATINGS.replace(
-        '[![TOTAL_RATERS]!]', curItem.numRaters);
-    ratings.children('view_count').innerText = strings.VIEWERS.replace(
-        '[![VIEWS]!]', curItem.viewCount);
-
-    for (var i = 0; i < 5; ++i) {
-      if (curItem.rating < i + 0.45) {
-        ratings.children('rating' + i).src = 'images/details/star_empty.png';
-      } else if (curItem.rating < i + 0.7) {
-        ratings.children('rating' + i).src = 'images/details/star_half.png';
-      } else {
-        ratings.children('rating' + i).src = 'images/details/star_full.png';
-      }
-    }
-
-    // Check if the flash player is available and its version is correct
-    var player = container.children('ytplayer');
-    var playerError = true;
-    if (player && player.object) {
-      // Taken from swfobject 2.0
-      try {
-        var v = player.object.GetVariable("$version");  // Will crash flash
-                                                        // v 6.0.21/23/29
-        debug.info('flash version: ' + v);
-        if (v) {
-          v = v.split(" ")[1].split(",");
-          var flashMajorVersion = parseInt(v[0], 10);
-          if (flashMajorVersion >= 8) {
-            playerError = false;
-          }
-        }
-      } catch(e) {}
-    }
-
-    if (!playerError) {
-      player.object.movie = curItem.embeddedurl + '&autoplay=1';
-
-      gl_selectedVideoUrl = curItem.url;
-    } else {
-      // Show an error message if the flash player is unavailable
-      container.visible = false;
-      xmlDetailsView.view.children('error').visible = true;
-    }
+    debug.trace("embedurl: " + curItem.embeddedurl);
+    xmlDetailsView.detailsViewData.putValue("curItem", curItem);
+    gl_selectedVideoUrl = curItem.url;
   }
 
   // Show the details view.

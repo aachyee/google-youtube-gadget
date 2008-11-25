@@ -4,6 +4,7 @@ PACKAGE_FILENAME = 'youtube.gg'
 
 FILES = [
   'constants.js',
+  'details.js',
   'details.xml',
   'gadget.gmanifest',
   'icon24_youtube.png',

@@ -208,6 +208,34 @@ Util.trimWhitespace = function(str) {
   return trimmed;
 };
 
+/**
+ * Detect if we are running on an apple.
+ * @return {boolean} True, if running on apple.
+ */
+Util.isMac = function() {
+  if (!Utils.isLinux() && !Utils.isWindows()) {
+    return framework.system.machine.manufacturer == 'Apple';
+  } else {
+    return false;
+  }
+};
+
+/**
+ * Detect if we are running on a Linux machine.
+ * @return {boolean} True, if running on Linux.
+ */
+Util.isLinux = function() {
+  return framework.runtime.osName == 'Linux';
+};
+
+/**
+ * Detect if we are running on a Windows machine.
+ * @return {boolean} True, if running on Windows.
+ */
+Util.isWindows = function() {
+  return framework.runtime.osName.match(/windows/i) !== null;
+};
+
 Function.prototype.bind = function(context) {
   var __method = this;
   var __arguments = [];

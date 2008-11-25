@@ -33,7 +33,7 @@
     <div name="bottom_right" x="184" y="247" width="16" height="53"
       background="images/main/bottom_right.png" />
 
-    <div name="searchbox" height="20" x="7" onmouseclick="_search_activate();">
+    <div name="searchbox" height="20" x="7" onclick="_search_activate();">
       <div name="searchfield_left" x="0" y="0" width="31" height="100%"
         background="images/main/search_left.png" />
       <div name="searchfield_middle" x="31" y="0" height="100%"
