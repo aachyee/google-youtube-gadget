@@ -108,10 +108,10 @@
       background="#000000" enabled="true" visible="false">
       <label name="upgradeReason" size="8" color="#CCCCCC"
         width="100%" height="60" y="5" wordWrap="true" />
+      <a name="upgradeDownloadUrl" size="9" color="#FFFFFF" overColor="#FFFFFF"
+        width="100%" height="22" y="65">&DOWNLOAD_GADGET;</a>
       <a name="upgradeInfoUrl" size="8" color="#FFFFFF" overColor="#FFFFFF"
-        width="100%" height="20" y="65">&MORE_INFORMATION;</a>
-      <a name="upgradeDownloadUrl" size="8" color="#FFFFFF" overColor="#FFFFFF"
-        width="100%" height="20" y="85">&DOWNLOAD_GADGET;</a>
+        width="100%" height="20" y="87">&MORE_INFORMATION;</a>
     </div>
   </div>
   <edit name="descriptionSizer" height="19" color="#cccccc" size="8" visible="false" />
