@@ -166,23 +166,24 @@ function init() {
       VERSION_INFO_URL, onMandatoryUpgrade);
 }
 
-var g_isUpgradeMode = false;
-
 function onMandatoryUpgrade(upgradeInfo) {
   debug.trace('Received mandatory upgrade notice.');
 
-  g_isUpgradeMode = true;
+  plugin.onAddCustomMenuItems = null;
+
   killTimers();
+
+  feed_select.visible = false;
+  content.visible = false;
+  searchresults.visible = false;
+  searchbox.visible = false;
+  drop_arrow_container.y = -200;
+  description.y = -200;
 
   upgradeReason.innerText = upgradeInfo.reason;
   upgradeInfoUrl.href = upgradeInfo.infoUrl;
   upgradeDownloadUrl.href = upgradeInfo.downloadUrl;
 
-  feed_select.visible = false;
-  content.visible = false;
-  description.visible = false;
-  drop_arrow_container.visible = false;
-  searchbox.visible = false;
   upgradeDiv.visible = true;
   updateStatus(strings.PLEASE_UPGRADE);
 }
@@ -194,10 +195,6 @@ function killTimers() {
 }
 
 function setDescriptionText(text) {
-  if (g_isUpgradeMode) {
-    return;
-  }
-
   description.innerText = text;
   descriptionSizer.value = text;
 
