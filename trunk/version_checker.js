@@ -124,9 +124,9 @@ UpgradeInfo.prototype.toString = function() {
 };
 
 VersionChecker.CHECK_INTERVAL = 2 * 60 * 60 * 1000;
-VersionChecker.CHECK_INTERVAL = 2 * 60 * 1000;
 
 function VersionChecker(currentVersionString, url, onUpgradeNeeded) {
+  this.isActive = true;
   this.currentVersion = Version.parse(currentVersionString);
   this.url = url;
   this.onUpgradeNeeded = onUpgradeNeeded;
@@ -147,7 +147,6 @@ VersionChecker.prototype.scheduleTimer = function(interval) {
 };
 
 VersionChecker.BASE_FUZZ = 15 * 60 * 1000;
-VersionChecker.BASE_FUZZ = 15 * 1000;
 
 VersionChecker.prototype.makeFuzz = function() {
   var fuzz = VersionChecker.BASE_FUZZ;
@@ -174,6 +173,10 @@ VersionChecker.prototype.makeOnReadyStateChange = function(request) {
 };
 
 VersionChecker.prototype.check = function() {
+  if (!this.isActive) {
+    return;
+  }
+
   var request = new XMLHttpRequest();
   request.open('GET', this.url, true);
   request.onreadystatechange = this.makeOnReadyStateChange(request);
@@ -198,6 +201,7 @@ VersionChecker.prototype.onReadyStateChange = function(request) {
     }
 
     if (upgradeInfo.mandatoryVersion.isGreater(this.currentVersion)) {
+      this.isActive = false;
       // No more need to check.
       view.clearTimeout(this.checkTimer);
       this.onUpgradeNeeded(upgradeInfo);
