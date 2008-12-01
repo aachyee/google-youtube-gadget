@@ -15,6 +15,7 @@ FILES = [
   'profile.js',
   'simple_http_request.js',
   'utils.js',
+  'version_checker.js',
   'youtube.js',
   'en/strings.xml',
   'images/details/bottom.png',
