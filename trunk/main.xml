@@ -70,6 +70,13 @@
       itemwidth="100%" itemheight="37" autoscroll="true" itemOverColor="#2a2a2a"
       itemSelectedColor="#666666" itemSeparator="false" multiSelect="false"
       visible="false" />
+    <div name="messageDiv" x="10" y="30" width="225" height="360"
+      background="#000000" enabled="true" visible="false">
+      <label name="messageLabel" size="8" color="#FFFFFF"
+        width="100%" height="360" y="5" wordWrap="true" />
+      <a name="messageRefreshLink" size="8" color="#FFFFFF" overColor="#FFFFFF" visible="false"
+        width="100%" height="20" y="25" onclick="getFreshVideos(true);">&TRY_AGAIN;</a>
+    </div>
     <div name="feed_select" x="60" y="27" width="126" height="86" visible="false">
       <div x="0" y="0" width="122" height="82"
         background="#595959" />
@@ -112,11 +119,6 @@
         width="100%" height="22" y="65">&DOWNLOAD_GADGET;</a>
       <a name="upgradeInfoUrl" size="8" color="#FFFFFF" overColor="#FFFFFF"
         width="100%" height="20" y="87">&MORE_INFORMATION;</a>
-    </div>
-    <div name="messageDiv" x="10" y="30" width="225" height="360"
-      background="#000000" enabled="true" visible="false">
-      <label name="messageLabel" size="8" color="#FFFFFF"
-        width="100%" height="360" y="5" wordWrap="true" />
     </div>
   </div>
   <edit name="descriptionSizer" height="19" color="#cccccc" size="8" visible="false" />

@@ -189,9 +189,10 @@ function onMandatoryUpgrade(upgradeInfo) {
   updateStatus(strings.PLEASE_UPGRADE);
 }
 
-function displayMessage(message) {
+function displayMessage(message, isShowLink) {
   messageDiv.visible = true;
   messageLabel.innerText = message;
+  messageRefreshLink.visible = isShowLink;
 }
 
 function killTimers() {
@@ -596,10 +597,11 @@ function updateVideos(videosArray) {
         videosArray[i].fetchStatusImage();
       }
     } else {
-      displayMessage(strings.NETWORK_ERROR);
+      displayMessage(strings.NO_VIDEOS_FOUND, false);
     }
   } else {
-    displayMessage(strings.NO_VIDEOS_FOUND);
+    displayMessage(strings.NETWORK_ERROR, true);
+    clearStatus();
   }
 }
 
