@@ -27,6 +27,7 @@ function detailsOnOpen() {
 
     description.innerText = curItem.description;
     more_link.href = curItem.url;
+    noEmbedLink.href = curItem.url;
 
     total.innerText = strings.RATINGS.replace(
         '[![TOTAL_RATERS]!]', curItem.numRaters);
@@ -64,12 +65,15 @@ function detailsOnOpen() {
       }
     }
 
-    if (!playerError) {
-      ytplayer.object.movie = curItem.embeddedurl + '&autoplay=1';
-    } else {
+    if (playerError) {
       // Show an error message if the flash player is unavailable
       player_container.visible = false;
       error.visible = true;
+    } else if (!curItem.embeddedurl) {
+      player_container.visible = false;
+      noEmbed.visible = true;
+    } else {
+      ytplayer.object.movie = curItem.embeddedurl + '&autoplay=1';
     }
   }
 }

@@ -36,4 +36,7 @@ http://code.google.com/p/google-youtube-gadget/
   <DOWNLOAD_GADGET>Download new gadget</DOWNLOAD_GADGET>
   <NETWORK_ERROR>Network or connection error</NETWORK_ERROR>
   <NO_VIDEOS_FOUND>No videos found</NO_VIDEOS_FOUND>
+
+  <NO_EMBED>Please visit YouTube to watch this video</NO_EMBED>
+  <WATCH_ON_YOUTUBE>Watch this video on YouTube</WATCH_ON_YOUTUBE>
 </strings>
