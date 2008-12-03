@@ -72,4 +72,14 @@
       vAlign="middle" width="100%" y="110" size="9" overColor="#999999"
       color="#ffffff">&INSTALL_FLASH;</a>
   </div>
+
+  <div name="noEmbed" visible="false" x="12" y="33" width="481" height="456">
+    <label align="center" vAlign="middle" width="100%" size="9" y="70"
+      height="40" bold="true" wordwrap="true"
+      color="#ffffff">&NO_EMBED;</label>
+    <a name="noEmbedLink" align="center"
+      vAlign="middle" width="100%" y="110" size="9" overColor="#999999"
+      color="#ffffff">&WATCH_ON_YOUTUBE;</a>
+  </div>
+
 </view>

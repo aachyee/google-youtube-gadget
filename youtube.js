@@ -140,7 +140,12 @@ YouTubeVideo.prototype.getItemXml = function() {
 };
 
 YouTubeVideo.prototype.getViewLength = function() {
+  if (isNaN(this.length)) {
+    return '';
+  }
+
   var viewSeconds = this.length % 60;
+
   var viewLength = Math.floor(this.length / 60) + ':' +
       Math.floor(viewSeconds / 10) + '' + Math.floor(viewSeconds % 10);
 
