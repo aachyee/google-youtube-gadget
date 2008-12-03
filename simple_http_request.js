@@ -29,6 +29,9 @@ function SimpleHTTPRequest() {
   var callbackObject_ = null;
   var receivedResultCallback_ = null;
   var tag_ = null;
+  var timeoutTimer_ = null;
+
+  var TIMEOUT_DURATION_MS = 20 * 1000;
 
   // Do a request to get a webpage. If getText is true, a text version of the
   // output will be returned. If false, the response stream will be returned
@@ -76,12 +79,14 @@ function SimpleHTTPRequest() {
       }
     }
 
+    timeoutTimer_ = view.setTimeout(onTimeout, TIMEOUT_DURATION_MS);
+
     // Send the request
     try {
       request_.send();
     } catch(e) {
       request_ = null;
-      callback(null, tag_);
+      // Timeout handler will call callback.
       return;
     }
   }
@@ -91,9 +96,22 @@ function SimpleHTTPRequest() {
     if (request_ == null)
       return;
 
+    view.clearTimeout(timeoutTimer_);
     stop_ = true;
     request_.abort();
     request_ = null;
+    callbackObject_ = null;
+  }
+
+  function onTimeout() {
+    debug.warning('Request timed out.');
+    callback(null, tag_);
+
+    if (request_ != null) {
+      request_.abort();
+      request_ = null;
+    }
+
     callbackObject_ = null;
   }
 
@@ -107,6 +125,8 @@ function SimpleHTTPRequest() {
     assert(request_ != null);
     if (request_.readyState != 4)
       return;
+
+    view.clearTimeout(timeoutTimer_);
 
     // If there was an http error, do not continue
     if (request_.status != 200) {

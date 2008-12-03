@@ -113,6 +113,11 @@
       <a name="upgradeInfoUrl" size="8" color="#FFFFFF" overColor="#FFFFFF"
         width="100%" height="20" y="87">&MORE_INFORMATION;</a>
     </div>
+    <div name="messageDiv" x="10" y="30" width="225" height="360"
+      background="#000000" enabled="true" visible="false">
+      <label name="messageLabel" size="8" color="#FFFFFF"
+        width="100%" height="360" y="5" wordWrap="true" />
+    </div>
   </div>
   <edit name="descriptionSizer" height="19" color="#cccccc" size="8" visible="false" />
 </view>

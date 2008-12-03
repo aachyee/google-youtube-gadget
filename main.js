@@ -136,7 +136,7 @@ function _logo_onclick() {
 }
 
 var g_versionChecker;
-var VERSION_INFO_URL = 'http://jyum.sfo:1109/plugins/versions/youtube.txt';
+var VERSION_INFO_URL = 'http://desktop.google.com/plugins/versions/youtube.txt';
 
 var g_contentRefreshTimer;
 
@@ -176,6 +176,7 @@ function onMandatoryUpgrade(upgradeInfo) {
   feed_select.visible = false;
   content.visible = false;
   searchresults.visible = false;
+  messageDiv.visible = false;
   searchbox.visible = false;
   drop_arrow_container.y = -200;
   description.y = -200;
@@ -186,6 +187,11 @@ function onMandatoryUpgrade(upgradeInfo) {
 
   upgradeDiv.visible = true;
   updateStatus(strings.PLEASE_UPGRADE);
+}
+
+function displayMessage(message) {
+  messageDiv.visible = true;
+  messageLabel.innerText = message;
 }
 
 function killTimers() {
@@ -253,6 +259,9 @@ function _onSize() {
 
   upgradeDiv.width = width - CONTENT_WIDTH_PADDING;
   upgradeDiv.height = content.height + searchbox.height;
+
+  messageDiv.width = content.width;
+  messageDiv.height = content.height;
 
   middle_left.height = height - TOP_HEIGHT;
   middle_middle.height = height - TOP_HEIGHT;
@@ -380,6 +389,7 @@ function enterSearchMode() {
   if (searchresults.children.count > 0) {
     searchresults.visible = true;
     content.visible = false;
+    messageDiv.visible = false;
   }
   setDescriptionText(strings.SEARCH_TITLE);
 }
@@ -391,6 +401,7 @@ function exitSearchMode() {
   updateFeedDescription();
   searchresults.visible = false;
   content.visible = true;
+  messageDiv.visible = false;
 
   searchfield.killfocus();
 }
@@ -577,12 +588,18 @@ function updateVideos(videosArray) {
   --gl_pendingResponses;
 
   if (videosArray) {
-    gl_pendingThumbnails += videosArray.length;
+    if (videosArray.length) {
+      gl_pendingThumbnails += videosArray.length;
 
-    for (var i = 0; i < videosArray.length; ++i) {
-      gl_videosQueue.push(videosArray[i]);
-      videosArray[i].fetchStatusImage();
+      for (var i = 0; i < videosArray.length; ++i) {
+        gl_videosQueue.push(videosArray[i]);
+        videosArray[i].fetchStatusImage();
+      }
+    } else {
+      displayMessage(strings.NETWORK_ERROR);
     }
+  } else {
+    displayMessage(strings.NO_VIDEOS_FOUND);
   }
 }
 
@@ -609,6 +626,8 @@ function displayVideos(newVideos) {
   var searchmode = isSearchMode();
   searchresults.visible = searchmode;
   content.visible = !searchmode;
+  messageDiv.visible = false;
+
   var listbox = searchmode ? searchresults : content;
 
   gl_videoData = {};

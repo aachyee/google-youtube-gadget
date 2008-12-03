@@ -34,5 +34,6 @@ http://code.google.com/p/google-youtube-gadget/
 
   <MORE_INFORMATION>More information</MORE_INFORMATION>
   <DOWNLOAD_GADGET>Download new gadget</DOWNLOAD_GADGET>
-  <PLEASE_UPGRADE>Update available</PLEASE_UPGRADE>
+  <NETWORK_ERROR>Network or connection error</NETWORK_ERROR>
+  <NO_VIDEOS_FOUND>No videos found</NO_VIDEOS_FOUND>
 </strings>

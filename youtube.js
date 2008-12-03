@@ -47,7 +47,11 @@ function Thumbnail(url, width, height) {
  */
 Thumbnail.prototype.receivedImage = function(source) {
   --gl_pendingThumbnails;
-  this.src = source;
+  if (source !== null) {
+    this.src = source;
+  } else {
+    debug.warning('Thumbnail data is null.');
+  }
 
   shouldDisplay();
 };
@@ -103,12 +107,13 @@ YouTubeVideo.uniqueId = 0;
 YouTubeVideo.prototype.isValid = function() {
   return (this.title !== undefined) &&
       (this.description !== undefined) &&
-      (this.length !== undefined) &&
       (this.url !== undefined) &&
-      (this.embeddedurl !== undefined) &&
-      Util.isValidUrl(this.embeddedurl) &&
       (this.thumbnail !== undefined) &&
       (this.viewCount !== undefined);
+      // These don't exist for embedding disabled videos.
+      // (this.length !== undefined) &&
+      // (this.embeddedurl !== undefined) &&
+      // Util.isValidUrl(this.embeddedurl) &&
 };
 
 YouTubeVideo.prototype.toString = function() {
@@ -183,6 +188,11 @@ YouTubeVideo.makeOnVideoRequest = function(callback) {
 };
 
 YouTubeVideo.onVideoRequest = function(responseText, callback) {
+  if (responseText === null) {
+    callback(null);
+    return;
+  }
+
   var videos = YouTubeVideo.parseVideoResponseXml(responseText);
   debug.info('num responses: ' + videos.length);
   callback(videos);
