@@ -20,7 +20,7 @@ limitations under the License.
 var YOUTUBE_BASE_SEARCH = 'http://gdata.youtube.com/feeds/';
 var YOUTUBE_SEARCH_FEED = YOUTUBE_BASE_SEARCH + 'videos?orderby=relevance';
 var YOUTUBE_STANDARD_FEED = YOUTUBE_BASE_SEARCH + 'standardfeeds/';
-var YOUTUBE_COMMON_PARAMETERS = '&alt=rss&racy=exclude&format=5';
+var YOUTUBE_COMMON_PARAMETERS = '&alt=rss&racy=exclude';
 
 /**
  * Simple container to store the state of a specific query
