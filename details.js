@@ -61,6 +61,11 @@ function detailsOnOpen() {
           }
         } catch(e) {}
       } else if (Util.isLinux()) {
+        try {
+          if (ytplayer.object.GetVariable) {
+            playerError = false;
+          }
+        } catch(e) {}
         playerError = false;
       }
     }
