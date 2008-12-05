@@ -631,6 +631,7 @@ function displayVideos(newVideos) {
   messageDiv.visible = false;
 
   var listbox = searchmode ? searchresults : content;
+  listbox.removeAllElements();
 
   gl_videoData = {};
 
