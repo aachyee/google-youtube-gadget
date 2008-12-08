@@ -66,7 +66,6 @@ function detailsOnOpen() {
             playerError = false;
           }
         } catch(e) {}
-        playerError = false;
       }
     }
 
