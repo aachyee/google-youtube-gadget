@@ -66,11 +66,12 @@
       height="40" bold="true" wordwrap="true"
       color="#ffffff">&FLASH_REQUIRED;</label>
     <a align="center"
-      onclick="var ie = new ActiveXObject('InternetExplorer.Application');
+      onclick="try { var ie = new ActiveXObject('InternetExplorer.Application');
         ie.Navigate('http://www.adobe.com/go/getflashplayer');
-        ie.Visible = true;"
+        ie.Visible = true; } catch(e)
+        { framework.openUrl('http://www.adobe.com/go/getflashplayer'); }"
       vAlign="middle" width="100%" y="110" size="9" overColor="#999999"
-      color="#ffffff">&INSTALL_FLASH;</a>
+      color="#ffffff" wordWrap="true" height="40">&INSTALL_FLASH;</a>
   </div>
 
   <div name="noEmbed" visible="false" x="12" y="33" width="481" height="456">
