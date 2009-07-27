@@ -1,5 +1,5 @@
 <strings>
-  <VERSION_STRING>1.0.0.0</VERSION_STRING>
+  <VERSION_STRING>1.0.0.1</VERSION_STRING>
   <GADGET_NAME>YouTube</GADGET_NAME>
   <GADGET_DESCRIPTION>Watch today's most popular YouTube videos</GADGET_DESCRIPTION>
   <GADGET_ABOUT_TEXT>
@@ -18,7 +18,7 @@ http://code.google.com/p/google-youtube-gadget/
   <VIDEO_ERROR>Video not found</VIDEO_ERROR>
   <MENU_REFRESH>Refresh videos</MENU_REFRESH>
   <FLASH_REQUIRED>This gadget requires the latest Flash Player.</FLASH_REQUIRED>
-  <INSTALL_FLASH>Click here to download and install the Adobe Flash Player.</INSTALL_FLASH>
+  <INSTALL_FLASH>Click here to install Flash. Please install Flash in Internet Explorer. You may need to restart Google Desktop after installation.</INSTALL_FLASH>
   <VIDEO_VIEW_COUNT desc="The number of times a video has been viewed">Views: [![VIEW_COUNT]!]</VIDEO_VIEW_COUNT>
   <SEARCH desc="Hint in the searchbox">Search YouTube</SEARCH>
   <LEARN_MORE>Watch this video on YouTube</LEARN_MORE>

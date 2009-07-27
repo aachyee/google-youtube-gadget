@@ -32,7 +32,7 @@ var MIN_GADGET_HEIGHT = 137;
 * Minimum width of the gadget
 * @type Number
 */
-var MIN_GADGET_WIDTH = 125;
+var MIN_GADGET_WIDTH = 85;
 /**
 * Amount of time to fade in milliseconds
 * @type Number
@@ -75,7 +75,7 @@ var UNDOCKED_TEXT_X = 78;
 * Horizontal padding between the view and content
 * @type Number
 */
-var CONTENT_WIDTH_PADDING = 25;
+var CONTENT_WIDTH_PADDING = 23;
 /**
 * Vertical padding between the view and content
 * @type Number
@@ -97,20 +97,20 @@ var TOP_HEIGHT = 152;
 */
 var BOTTOM_HEIGHT = 53;
 /**
-* Width of the images on the left of the gadget, used for offset
+* Width of the images on the left and right of the gadget, used for offset
 * @type Number
 */
-var LEFT_WIDTH = 28;
+var LEFT_WIDTH = 26;
 /**
 * Width of the images on the right of the gadget, used for offset
 * @type Number
 */
-var RIGHT_WIDTH = 16;
+var RIGHT_WIDTH = 14;
 /**
 * Padding around the searchbox
 * @type Number
 */
-var SEARCHBOX_RIGHT_PADDING = 11;
+var SEARCHBOX_RIGHT_PADDING = 9;
 var SEARCHBOX_LEFT_PADDING = 7;
 var SEARCHBOX_BOTTOM_PADDING = 11;
 var SEARCHCLOSE_RIGHT_PADDING = 12;
